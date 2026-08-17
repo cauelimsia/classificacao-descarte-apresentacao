@@ -10,7 +10,7 @@ function ativo(rotulo, pergunta, nivel, corNivel, justificativa, descarte) {
       <p><b>Por quê:</b> ${justificativa}</p>
       <p><b>Descarte seguro:</b> ${descarte}</p>
     </div>
-    <div class="demo-acoes"><button class="botao btn-revelar">Revelar classificação</button></div>`;
+    <p class="hint-revelar">aperte → para revelar</p>`;
 }
 
 const SLIDES = [
@@ -132,7 +132,17 @@ function irPara(i) {
   if (notasVisiveis) notes.textContent = SLIDES[i].nota;
 }
 
-function proximo() { irPara(atual + 1); }
+function proximo() {
+  const slideEl = els[atual];
+  const oculto = slideEl && slideEl.querySelector(".veredito.oculto");
+  if (oculto) {
+    oculto.classList.remove("oculto");
+    const hint = slideEl.querySelector(".hint-revelar");
+    if (hint) hint.remove();
+    return;
+  }
+  irPara(atual + 1);
+}
 function anterior() { irPara(atual - 1); }
 
 document.getElementById("next").addEventListener("click", proximo);
@@ -166,16 +176,6 @@ window.addEventListener("hashchange", () => {
 
 const inicial = parseInt(location.hash.replace("#/", ""), 10);
 irPara(isNaN(inicial) ? 0 : inicial - 1);
-
-/* ---------- revelar classificação ---------- */
-
-document.addEventListener("click", (e) => {
-  if (e.target.classList.contains("btn-revelar")) {
-    const slide = e.target.closest(".slide");
-    slide.querySelector(".veredito").classList.remove("oculto");
-    e.target.remove();
-  }
-});
 
 /* ---------- partículas da capa (nas cores wyden) ---------- */
 

@@ -321,3 +321,18 @@ body[data-tema="escuro"] .hud { color: var(--areia); }
 }
 .selo-vermelho { background: var(--erro); color: #fff; }
 .selo-laranja { background: var(--laranja); color: var(--roxo); }
+
+.hint-revelar {
+  margin-top: 2rem;
+  font-family: var(--mono);
+  font-size: .8rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--laranja);
+  opacity: .8;
+  animation: pulsa 1.6s ease-in-out infinite;
+}
+@keyframes pulsa {
+  0%, 100% { opacity: .45; }
+  50% { opacity: .95; }
+}
