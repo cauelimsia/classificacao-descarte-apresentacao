@@ -344,3 +344,23 @@ body[data-tema="escuro"] .hud { color: var(--areia); }
   0%, 100% { opacity: .45; }
   50% { opacity: .95; }
 }
+
+/* ---------- aviso do controle remoto ---------- */
+
+.remoto-aviso {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 40;
+  padding: .45rem .8rem;
+  border-radius: 999px;
+  font-size: .72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, .45);
+  border: 1px solid rgba(255, 255, 255, .18);
+  color: #faf6f2;
+  backdrop-filter: blur(6px);
+}
+.remoto-aviso.remoto-ok { border-color: rgba(70, 193, 127, .55); }
+.remoto-aviso[hidden] { display: none; }

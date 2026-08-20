@@ -132,6 +132,12 @@ function irPara(i) {
   bar.style.width = ((i + 1) / SLIDES.length * 100) + "%";
   location.hash = "/" + (i + 1);
   if (notasVisiveis) notes.textContent = SLIDES[i].nota;
+  avisaMudanca();
+}
+
+// o controle remoto escuta isto para espelhar o slide atual no celular
+function avisaMudanca() {
+  document.dispatchEvent(new CustomEvent("deck:mudou"));
 }
 
 function proximo() {
@@ -141,6 +147,7 @@ function proximo() {
     oculto.classList.remove("oculto");
     const hint = slideEl.querySelector(".hint-revelar");
     if (hint) hint.remove();
+    avisaMudanca();
     return;
   }
   irPara(atual + 1);
@@ -178,6 +185,37 @@ window.addEventListener("hashchange", () => {
 
 const inicial = parseInt(location.hash.replace("#/", ""), 10);
 irPara(isNaN(inicial) ? 0 : inicial - 1);
+
+/* ---------- api pública, usada pelo controle remoto ---------- */
+
+function tituloDe(i) {
+  const provisorio = document.createElement("div");
+  provisorio.innerHTML = SLIDES[i].html;
+  const titulo = provisorio.querySelector("h1, h2");
+  if (!titulo) return "Slide " + (i + 1);
+  titulo.querySelectorAll("br").forEach((br) => br.replaceWith(" "));
+  return titulo.textContent.trim();
+}
+
+window.DECK = {
+  total: SLIDES.length,
+  proximo,
+  anterior,
+  irPara,
+  titulo: tituloDe,
+  // o celular precisa saber se a seta vai revelar o veredito ou pular de slide
+  estado() {
+    const el = els[atual];
+    return {
+      i: atual,
+      total: SLIDES.length,
+      titulo: tituloDe(atual),
+      nota: SLIDES[atual].nota,
+      proximoTitulo: atual + 1 < SLIDES.length ? tituloDe(atual + 1) : null,
+      revela: !!(el && el.querySelector(".veredito.oculto"))
+    };
+  }
+};
 
 /* ---------- partículas da capa (nas cores wyden) ---------- */
 
