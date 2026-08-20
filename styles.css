@@ -330,6 +330,71 @@ body[data-tema="escuro"] .hud { color: var(--areia); }
 .selo-vermelho { background: var(--erro); color: #fff; }
 .selo-laranja { background: var(--laranja); color: var(--roxo); }
 
+/* ---------- simulado: pergunta à esquerda, resposta à direita ---------- */
+
+/* o título compete com a resposta pelo espaço vertical, então encolhe aqui */
+.slide.q h2 {
+  font-size: clamp(1.5rem, 3.6vw, 2.6rem);
+  max-width: 100%;
+}
+
+.questao {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: clamp(1.2rem, 3.5vw, 3rem);
+  align-items: start;
+  margin-top: clamp(1rem, 2.5vh, 1.8rem);
+}
+
+.pergunta {
+  border-left: 3px solid var(--laranja);
+  padding-left: clamp(.8rem, 1.6vw, 1.2rem);
+  animation: sobe .6s .12s ease both;
+}
+.pergunta p {
+  font-size: clamp(.92rem, 1.9vw, 1.25rem);
+  line-height: 1.45;
+}
+
+/* a resposta ocupa a coluna da direita; escondida, a coluna fica vazia e nada
+   se desloca na hora de revelar */
+.resposta {
+  margin-top: 0;
+  max-width: none;
+  border-left: 3px solid rgba(250, 246, 242, .25);
+  padding-left: clamp(.8rem, 1.6vw, 1.2rem);
+}
+.resposta .tese {
+  margin-top: 0;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.05rem, 2.3vw, 1.55rem);
+  line-height: 1.15;
+  letter-spacing: -.01em;
+  color: var(--laranja);
+}
+.resposta p {
+  font-size: clamp(.82rem, 1.55vw, 1.02rem);
+  line-height: 1.5;
+  margin-top: .7rem;
+}
+.resposta .fundamento {
+  margin-top: 1rem;
+  padding-top: .7rem;
+  border-top: 1px solid rgba(250, 246, 242, .18);
+  font-family: var(--mono);
+  font-size: clamp(.58rem, 1.1vw, .72rem);
+  line-height: 1.6;
+  letter-spacing: .04em;
+  opacity: .6;
+}
+
+/* telas baixas ou estreitas: uma coluna só, com rolagem no slide */
+@media (max-width: 860px), (max-height: 560px) {
+  .questao { grid-template-columns: 1fr; }
+  .slide.q { justify-content: flex-start; overflow-y: auto; }
+}
+
 .hint-revelar {
   margin-top: 2rem;
   font-family: var(--mono);

@@ -10,6 +10,9 @@ disciplina Introdução à Segurança da Informação (Martha Falcão Wyden, Pro
 - Engine de slides própria em JavaScript puro: cada slide é um objeto de dados, o resto é derivado
 - **Modo quiz para a sala**: cada ativo aparece sem rótulo, a turma opina e o botão
   "Revelar classificação" mostra o veredito com justificativa e método de descarte
+- **Simulado ENADE**: as 10 questões discursivas da atividade, uma por slide. A pergunta fica à
+  esquerda, a sala responde, e a seta abre nossa resposta à direita — com a fundamentação em
+  ISO 27001/27002 e LGPD, que é o que vale metade da nota
 - Deep-link por hash (`#/3` abre direto o primeiro ativo), navegação por teclado e touch
 - Notas do apresentador embutidas (tecla `N`)
 - Fundo de partículas em canvas na capa, nas cores da identidade Wyden
