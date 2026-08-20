@@ -22,7 +22,8 @@ const SLIDES = [
       <h1>CLASSIFICAÇÃO<br>E DESCARTE</h1>
       <p class="grande">Cenário <span class="destaque">TechNova Solutions</span>: classificar os ativos de
       informação e decidir como eles morrem no fim do ciclo de vida.</p>
-      <p class="assinatura">Cauê Lima e trio · Turma 3001 · Martha Falcão Wyden</p>`
+      <p class="assinatura"><b>Cauê Lima · Juan Valente · Felipe Costa · Jefferson</b><br>
+      Turma 3001 · Martha Falcão Wyden</p>`
   },
   {
     tema: "claro",
@@ -92,7 +93,8 @@ const SLIDES = [
       <h2>Classificar é decidir quanto custa perder</h2>
       <p class="grande">O rótulo do ativo define quem acessa, como protege e como descarta.
       <span class="destaque">Proteção proporcional ao impacto</span>, nem paranoia, nem descuido.</p>
-      <p class="assinatura">Obrigado! · Classificação e Descarte · Introdução à Segurança da Informação</p>`
+      <p class="assinatura"><b>Cauê Lima · Juan Valente · Felipe Costa · Jefferson</b><br>
+      Obrigado! · Classificação e Descarte · Introdução à Segurança da Informação</p>`
   }
 ];
 
