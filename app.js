@@ -206,13 +206,16 @@ window.DECK = {
   // o celular precisa saber se a seta vai revelar o veredito ou pular de slide
   estado() {
     const el = els[atual];
+    const revela = !!(el && el.querySelector(".veredito.oculto"));
     return {
       i: atual,
       total: SLIDES.length,
       titulo: tituloDe(atual),
       nota: SLIDES[atual].nota,
       proximoTitulo: atual + 1 < SLIDES.length ? tituloDe(atual + 1) : null,
-      revela: !!(el && el.querySelector(".veredito.oculto"))
+      revela,
+      // rótulo pronto: o celular não precisa saber as regras deste deck
+      dica: revela ? "revela a classificação" : "próximo slide"
     };
   }
 };

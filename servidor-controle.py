@@ -64,7 +64,7 @@ class Handler(SimpleHTTPRequestHandler):
         if rota == "/eventos":
             return self.fluxo_eventos()
         if rota in ("/controle", "/controle/"):
-            self.path = "/controle.html"
+            self.path = "/controle-local.html"
         return super().do_GET()
 
     def fluxo_eventos(self):
